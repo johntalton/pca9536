@@ -1,0 +1,16 @@
+{
+  "name": "@johntalton/pca9536",
+  "version": "1.0.0",
+  "description": "",
+  "author": "johntalton@gmail.com",
+  "license": "MIT",
+
+  "type": "module",
+  "main": "src/index.mjs",
+  "exports": {
+    "import": "./src/index.js"
+  },
+  "files": [
+    "src/**/*.js"
+  ]
+}
