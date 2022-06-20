@@ -1,5 +1,7 @@
 import { Common } from './common.js'
 
+export { SET, CLEAR } from './common.js'
+
 export class PCA9536 {
 	#bus
 
@@ -11,14 +13,14 @@ export class PCA9536 {
 
 	async getOutputPort() { return Common.getOutputPort(this.#bus) }
 
-	async setOutputPort(values) { return Common.setOutputPort(this.#bus) }
+	async setOutputPort(values) { return Common.setOutputPort(this.#bus, values) }
 
 	async getPolarityInversion() { return Common.getPolarityInversion(this.#bus) }
 
-	async setPolarityInversion(values) { return Common.setPolarityInversion(this.#bus) }
+	async setPolarityInversion(values) { return Common.setPolarityInversion(this.#bus, values) }
 
 	async getConfiguration() { return Common.getConfiguration(this.#bus) }
 
-	async setConfiguration() { return Common.setConfiguration(this.#bus) }
+	async setConfiguration(values) { return Common.setConfiguration(this.#bus, values) }
 
 }
