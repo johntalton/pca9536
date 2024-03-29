@@ -84,8 +84,8 @@ export class Common {
 		return getRegister(bus, REGISTER.POLARITY_INVERSION)
 	}
 
-	static async setPolarityInversion(bus, inverstionValues) {
-		return setRegister(bus, REGISTER.POLARITY_INVERSION, inverstionValues)
+	static async setPolarityInversion(bus, inversionValues) {
+		return setRegister(bus, REGISTER.POLARITY_INVERSION, inversionValues)
 	}
 
 	static async getConfiguration(bus) {
