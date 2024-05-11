@@ -14,18 +14,18 @@ export const REGISTER_DEFAULT = {
 	CONFIGURATION: 0b1111_1111
 }
 
+export const SET = 1
+export const CLEAR = 0
+
 export const DIRECTION = {
-	INPUT: 1,
-	OUTPUT: 0
+	INPUT: SET,
+	OUTPUT: CLEAR
 }
 
 export const POLARITY = {
-	RETAINED: 0,
-	INVERTED: 1
+	RETAINED: CLEAR,
+	INVERTED: SET
 }
-
-export const SET = 1
-export const CLEAR = 0
 
 function parseRegister(valueByte) {
 	const LOWER_FOUR_MASK = 0b0000_1111
@@ -72,7 +72,7 @@ export class Common {
 		return getRegister(bus, REGISTER.INPUT_PORT)
 	}
 
-	static async getOutputsPort(bus) {
+	static async getOutputPort(bus) {
 		return getRegister(bus, REGISTER.OUTPUT_PORT)
 	}
 

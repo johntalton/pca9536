@@ -1,6 +1,5 @@
 import { Common } from './common.js'
-
-export { SET, CLEAR } from './common.js'
+export * from './common.js'
 
 export class PCA9536 {
 	#bus
