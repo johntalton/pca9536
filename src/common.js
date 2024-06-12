@@ -27,6 +27,8 @@ export const POLARITY = {
 	INVERTED: SET
 }
 
+export const BYTE_LENGTH_ONE = 1
+
 function parseRegister(valueByte) {
 	const LOWER_FOUR_MASK = 0b0000_1111
 
@@ -46,9 +48,12 @@ function parseRegister(valueByte) {
 }
 
 async function getRegister(bus, register) {
-	const ab = await bus.readI2cBlock(register, 1)
+	const buffer = await bus.readI2cBlock(register, BYTE_LENGTH_ONE)
 
-	const dv = new DataView(ab)
+	const dv = ArrayBuffer.isView(buffer) ?
+		new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength) :
+		new DataView(buffer)
+
 	const valueByte = dv.getUint8(0)
 
 	return parseRegister(valueByte)
