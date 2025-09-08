@@ -1,14 +1,13 @@
 # pca9536
 
+Single Port I²C GPIO Expander with four pins.
+
 [![npm Version](http://img.shields.io/npm/v/@johntalton/pca9536.svg)](https://www.npmjs.com/package/@johntalton/pca9536)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/johntalton/pca9536)
-![CI](https://github.com/johntalton/pca9536/workflows/CI/badge.svg)
+[![CI](https://github.com/johntalton/pca9536/actions/workflows/CI.yaml/badge.svg)](https://github.com/johntalton/pca9536/actions/workflows/CI.yaml)
 ![GitHub](https://img.shields.io/github/license/johntalton/pca9536)
 [![Downloads Per Month](http://img.shields.io/npm/dm/@johntalton/pca9536.svg)](https://www.npmjs.com/package/@johntalton/pca9536)
 ![GitHub last commit](https://img.shields.io/github/last-commit/johntalton/pca9536)
-
-Single Port I²C GPIO Expander with four pins.
-
 
 # Usage / Example
 
@@ -17,10 +16,11 @@ Setting the profile for any pin must set the entire Port (4 pins).
 It is common to read the settings and write them back modified, however, care must be taken with the approach when other actions can exist on the bus.
 
 ```javascript
+import { I2CAddressedBus } from '@johntalton/and-other-delights'
 import { PCA9536, DIRECTION, SET, CLEAR } from '@johntalton/pca9536'
 
 const bus = /* ... */
-const device = PCA9536.from(bus)
+const device = new PCA9536(new I2CAddressedBus(bus, ))
 
 await device.setConfiguration({
   gpio0: DIRECTION.OUTPUT,
